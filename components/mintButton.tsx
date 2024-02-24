@@ -44,6 +44,8 @@ import {
   VStack,
   Divider,
   createStandaloneToast,
+  Center,
+  Input,
 } from "@chakra-ui/react";
 import {
   fetchAddressLookupTable,
@@ -501,67 +503,147 @@ export function ButtonList({
   }
 
   const listItems = buttonGuardList.map((buttonGuard, index) => (
-    <Box key={index} marginTop={"20px"}>
-      <Divider my="10px" />
-      <HStack>
-        <Heading size="xs" textTransform="uppercase">
-          {buttonGuard.header}
-        </Heading>
-        <Flex justifyContent="flex-end" marginLeft="auto">
-          {buttonGuard.endTime > createBigInt(0) &&
-            buttonGuard.endTime - solanaTime > createBigInt(0) &&
-            (!buttonGuard.startTime ||
-              buttonGuard.startTime - solanaTime <= createBigInt(0)) && (
-              <>
-                <Text fontSize="sm" marginRight={"2"}>
-                  Ending in:{" "}
-                </Text>
-                <Timer
-                  toTime={buttonGuard.endTime}
-                  solanaTime={solanaTime}
-                  setCheckEligibility={setCheckEligibility}
-                />
-              </>
-            )}
-          {buttonGuard.startTime > createBigInt(0) &&
-            buttonGuard.startTime - solanaTime > createBigInt(0) &&
-            (!buttonGuard.endTime ||
-              solanaTime - buttonGuard.endTime <= createBigInt(0)) && (
-              <>
-                <Text fontSize="sm" marginRight={"2"}>
-                  Starting in:{" "}
-                </Text>
-                <Timer
-                  toTime={buttonGuard.startTime}
-                  solanaTime={solanaTime}
-                  setCheckEligibility={setCheckEligibility}
-                />
-              </>
-            )}
-        </Flex>
-      </HStack>
-      <SimpleGrid columns={2} spacing={5}>
-        <Text pt="2" fontSize="sm">
-          {buttonGuard.mintText}
-        </Text>
+    <Box key={index} mb={"2rem"}>
+      <Divider mb="2rem" />
+      <HStack
+        px={"1.5rem"}
+        alignItems={"center"}
+        justifyContent={"space-between"}
+      >
+        <VStack alignItems={"flex-start"}>
+          <HStack>
+            <Heading
+              color={"white"}
+              size="xs"
+              fontWeight={"semibold"}
+              textTransform="uppercase"
+            >
+              {buttonGuard.header} (0.05 $SOL)
+            </Heading>
+            <Flex justifyContent="flex-end" marginLeft="auto">
+              {buttonGuard.endTime > createBigInt(0) &&
+                buttonGuard.endTime - solanaTime > createBigInt(0) &&
+                (!buttonGuard.startTime ||
+                  buttonGuard.startTime - solanaTime <= createBigInt(0)) && (
+                  <>
+                    <Text color={"white"} fontSize="sm" marginRight={"2"}>
+                      Ending in:{" "}
+                    </Text>
+                    <Timer
+                      toTime={buttonGuard.endTime}
+                      solanaTime={solanaTime}
+                      setCheckEligibility={setCheckEligibility}
+                    />
+                  </>
+                )}
+              {buttonGuard.startTime > createBigInt(0) &&
+                buttonGuard.startTime - solanaTime > createBigInt(0) &&
+                (!buttonGuard.endTime ||
+                  solanaTime - buttonGuard.endTime <= createBigInt(0)) && (
+                  <>
+                    <Text color={"white"} fontSize="sm" marginRight={"2"}>
+                      Starting in:{" "}
+                    </Text>
+                    <Timer
+                      toTime={buttonGuard.startTime}
+                      solanaTime={solanaTime}
+                      setCheckEligibility={setCheckEligibility}
+                    />
+                  </>
+                )}
+            </Flex>
+          </HStack>
+          <Text color={"whiteAlpha.700"} fontSize="xs">
+            {buttonGuard.mintText}
+          </Text>
+        </VStack>
         <VStack>
           {process.env.NEXT_PUBLIC_MULTIMINT && buttonGuard.allowed ? (
-            <NumberInput
-              value={numberInputValues[buttonGuard.label] || 1}
-              min={1}
-              max={buttonGuard.maxAmount < 1 ? 1 : buttonGuard.maxAmount}
-              size="sm"
-              isDisabled={!buttonGuard.allowed}
-              onChange={(valueAsString, valueAsNumber) =>
-                handleNumberInputChange(buttonGuard.label, valueAsNumber)
-              }
-            >
-              <NumberInputField />
-              <NumberInputStepper>
-                <NumberIncrementStepper />
-                <NumberDecrementStepper />
-              </NumberInputStepper>
-            </NumberInput>
+            // <NumberInput
+            //   value={numberInputValues[buttonGuard.label] || 1}
+            //   min={1}
+            //   max={buttonGuard.maxAmount < 1 ? 1 : buttonGuard.maxAmount}
+            //   size="sm"
+            //   isDisabled={!buttonGuard.allowed}
+            //   onChange={(valueAsString, valueAsNumber) =>
+            //     handleNumberInputChange(buttonGuard.label, valueAsNumber)
+            //   }
+            // >
+            //   <NumberInputField />
+            //   <NumberInputStepper>
+            //     <NumberIncrementStepper />
+            //     <NumberDecrementStepper />
+            //   </NumberInputStepper>
+            // </NumberInput>
+
+            <HStack maxW={"9rem"} bg={"white"} gap={1} p={1}>
+              <Input
+                h={23}
+                p={0}
+                px={1.5}
+                border={0}
+                focusBorderColor="transparent"
+                type="number"
+                value={numberInputValues[buttonGuard.label] || 1}
+                min={1}
+                isDisabled={!buttonGuard.allowed}
+                onChange={(e) => {
+                  console.log(numberInputValues, buttonGuard.maxAmount);
+                  if (
+                    parseFloat(e.target.value) >= 1 &&
+                    parseFloat(e.target.value) <=
+                      (buttonGuard.maxAmount < 1 ? 1 : buttonGuard.maxAmount)
+                  )
+                    handleNumberInputChange(
+                      buttonGuard.label,
+                      parseFloat(e.target.value)
+                    );
+                }}
+              />
+              <Center
+                as="button"
+                bg={"#D9D9D980"}
+                fontSize={"1.2rem"}
+                color={"black"}
+                borderRadius={3}
+                minW={"23px"}
+                h={"23px"}
+                onClick={() => {
+                  if (
+                    buttonGuard.allowed &&
+                    numberInputValues[buttonGuard.label] <
+                      (buttonGuard.maxAmount < 1 ? 10 : buttonGuard.maxAmount)
+                  )
+                    handleNumberInputChange(
+                      buttonGuard.label,
+                      numberInputValues[buttonGuard.label] + 1
+                    );
+                }}
+              >
+                +
+              </Center>
+              <Center
+                as="button"
+                bg={"#D9D9D980"}
+                fontSize={"1.2rem"}
+                color={"black"}
+                borderRadius={3}
+                minW={"23px"}
+                h={"23px"}
+                onClick={() => {
+                  if (
+                    buttonGuard.allowed &&
+                    numberInputValues[buttonGuard.label] > 1
+                  )
+                    handleNumberInputChange(
+                      buttonGuard.label,
+                      numberInputValues[buttonGuard.label] - 1
+                    );
+                }}
+              >
+                -
+              </Center>
+            </HStack>
           ) : null}
 
           <Tooltip label={buttonGuard.tooltip} aria-label="Mint button">
@@ -584,7 +666,9 @@ export function ButtonList({
               }
               key={buttonGuard.label}
               size="sm"
-              backgroundColor="teal.100"
+              w={"9rem"}
+              borderRadius={"5px"}
+              backgroundColor="#F8F8B4"
               isDisabled={!buttonGuard.allowed}
               isLoading={
                 guardList.find((elem) => elem.label === buttonGuard.label)
@@ -599,7 +683,7 @@ export function ButtonList({
             </Button>
           </Tooltip>
         </VStack>
-      </SimpleGrid>
+      </HStack>
     </Box>
   ));
 

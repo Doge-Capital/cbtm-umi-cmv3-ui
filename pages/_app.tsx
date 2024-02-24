@@ -10,6 +10,7 @@ import "@solana/wallet-adapter-react-ui/styles.css";
 import { ChakraProvider } from '@chakra-ui/react'
 import { image, headerText } from 'settings'
 import { SolanaTimeProvider } from "@/utils/SolanaTimeContext";
+import Header from "@/components/Header";
 
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -50,6 +51,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <UmiProvider endpoint={endpoint}>
             <WalletModalProvider>
               <SolanaTimeProvider>
+                {/* <Header /> */}
                 <Component {...pageProps} />
               </SolanaTimeProvider>
             </WalletModalProvider>
