@@ -256,7 +256,7 @@ export default function Home() {
         <style jsx global>
           {`
             body {
-              background: #97ADED;
+              background: #97aded;
             }
           `}
         </style>
@@ -281,12 +281,14 @@ export default function Home() {
           </CardHeader>
 
           <CardBody w={"full"}>
-            <Center
-              display={"flex"}
-              flexDirection={"column"}
-              my={"1.5rem"}
-            >
-              <Box boxShadow={"xl"} bg={"red.200"} rounded={"lg"} mt={-12} pos={"relative"}>
+            <Center display={"flex"} flexDirection={"column"} my={"1.5rem"}>
+              <Box
+                boxShadow={"xl"}
+                bg={"red.200"}
+                rounded={"lg"}
+                mt={-12}
+                pos={"relative"}
+              >
                 <Image
                   rounded={"lg"}
                   height={230}
@@ -299,21 +301,20 @@ export default function Home() {
                 <></>
               ) : (
                 <Flex mt={"0.7rem"}>
-                    <HStack>
-                      <Text color={"#ffffff"} fontSize={"1rem"}>Available NFTs:</Text>
-                      <Text color={"#ffffff"} fontSize={"1rem"}>
-                        {Number(candyMachine?.data.itemsAvailable) -
-                          Number(candyMachine?.itemsRedeemed)}
-                        /{Number(candyMachine?.data.itemsAvailable)}
-                      </Text>
-                    </HStack>
+                  <HStack>
+                    <Text color={"#ffffff"} fontSize={"1rem"}>
+                      Available NFTs:
+                    </Text>
+                    <Text color={"#ffffff"} fontSize={"1rem"}>
+                      {Number(candyMachine?.data.itemsAvailable) -
+                        Number(candyMachine?.itemsRedeemed)}
+                      /{Number(candyMachine?.data.itemsAvailable)}
+                    </Text>
+                  </HStack>
                 </Flex>
               )}
             </Center>
             <Stack w={"full"} divider={<StackDivider />} spacing="0">
-
-
-
               {loading ? (
                 <div>
                   <Divider mb="10px" />

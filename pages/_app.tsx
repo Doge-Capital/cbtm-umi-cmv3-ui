@@ -7,8 +7,8 @@ import { useMemo } from "react";
 import { UmiProvider } from "../utils/UmiProvider";
 import "@/styles/globals.css";
 import "@solana/wallet-adapter-react-ui/styles.css";
-import { ChakraProvider } from '@chakra-ui/react'
-import { image, headerText } from 'settings'
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { image, headerText } from "settings";
 import { SolanaTimeProvider } from "@/utils/SolanaTimeContext";
 import {
   SolflareWalletAdapter,
@@ -16,11 +16,15 @@ import {
 } from "@solana/wallet-adapter-wallets";
 import "@solana/wallet-adapter-react-ui/styles.css";
 import Header from "@/components/Header";
-
+import Image from "next/legacy/image";
+import BG from "@/public/assets/background.png";
 
 export default function App({ Component, pageProps }: AppProps) {
   let network = WalletAdapterNetwork.Devnet;
-  if (process.env.NEXT_PUBLIC_ENVIRONMENT === "mainnet-beta" || process.env.NEXT_PUBLIC_ENVIRONMENT === "mainnet") {
+  if (
+    process.env.NEXT_PUBLIC_ENVIRONMENT === "mainnet-beta" ||
+    process.env.NEXT_PUBLIC_ENVIRONMENT === "mainnet"
+  ) {
     network = WalletAdapterNetwork.Mainnet;
   }
   let endpoint = "https://api.devnet.solana.com";
@@ -28,9 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
     endpoint = process.env.NEXT_PUBLIC_RPC;
   }
   const wallets = useMemo(
-    () => [
-      new SolflareWalletAdapter(), new LedgerWalletAdapter()
-    ],
+    () => [new SolflareWalletAdapter(), new LedgerWalletAdapter()],
     []
   );
   return (
@@ -42,12 +44,12 @@ export default function App({ Component, pageProps }: AppProps) {
           property="og:description"
           content="Website is based on MarkSackerbers work"
         />
-        <meta name="description" content="Website is based on MarkSackerbers work" />
-
         <meta
-          property="og:image"
-          content={image}
+          name="description"
+          content="Website is based on MarkSackerbers work"
         />
+
+        <meta property="og:image" content={image} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{headerText}</title>
         <link rel="icon" href="/favicon.ico" />
@@ -57,8 +59,32 @@ export default function App({ Component, pageProps }: AppProps) {
           <UmiProvider endpoint={endpoint}>
             <WalletModalProvider>
               <SolanaTimeProvider>
-                <Header />
-                <Component {...pageProps} />
+                <Box
+                  display={"flex"}
+                  flexDirection={"column"}
+                  flex={1}
+                  w={"100vw"}
+                  h={"100vh"}
+                  overflow={"hidden"}
+                >
+                  <Header />
+                  <Box
+                    position={"absolute"}
+                    w={"100vw"}
+                    h={"80vh"}
+                    top={"40vh"}
+                    left={0}
+                    zIndex={-1}
+                  >
+                    <Image
+                      src={BG}
+                      alt="Background"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </Box>
+                  <Component {...pageProps} />
+                </Box>
               </SolanaTimeProvider>
             </WalletModalProvider>
           </UmiProvider>
