@@ -2,6 +2,7 @@ import React from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useWalletModal } from "@solana/wallet-adapter-react-ui";
 import { useRouter } from "next/router";
+import { Box } from "@chakra-ui/react";
 
 function ConnectWallet() {
   const wallet = useWallet();
@@ -9,8 +10,15 @@ function ConnectWallet() {
   const router = useRouter();
 
   return (
-    <button
-      className="mx-5 px-2 py-2 md:px-4 md:py-2 lg:px-5 lg:py-3 rounded-md text-sm lg:text-base font-bold text-[#5075E2] bg-[#F8F8B4] font-roboto"
+    <Box
+      cursor={"pointer"}
+      p={3}
+      borderRadius={"4px"}
+      bg={"#F8F8B4"}
+      color={"#5075E2"}
+      fontSize={"1.2rem"}
+      fontWeight={"black"}
+      letterSpacing={"tighter"}
       onClick={async (e) => {
         if (wallet && wallet.publicKey) {
           try {
@@ -31,7 +39,7 @@ function ConnectWallet() {
           "..." +
           wallet.publicKey.toString().slice(-5)
         : "Connect Wallet"}
-    </button>
+    </Box>
   );
 }
 

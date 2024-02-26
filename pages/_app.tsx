@@ -10,6 +10,11 @@ import "@solana/wallet-adapter-react-ui/styles.css";
 import { ChakraProvider } from '@chakra-ui/react'
 import { image, headerText } from 'settings'
 import { SolanaTimeProvider } from "@/utils/SolanaTimeContext";
+import {
+  SolflareWalletAdapter,
+  LedgerWalletAdapter,
+} from "@solana/wallet-adapter-wallets";
+import "@solana/wallet-adapter-react-ui/styles.css";
 import Header from "@/components/Header";
 
 
@@ -24,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }
   const wallets = useMemo(
     () => [
+      new SolflareWalletAdapter(), new LedgerWalletAdapter()
     ],
     []
   );
@@ -51,7 +57,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <UmiProvider endpoint={endpoint}>
             <WalletModalProvider>
               <SolanaTimeProvider>
-                {/* <Header /> */}
+                <Header />
                 <Component {...pageProps} />
               </SolanaTimeProvider>
             </WalletModalProvider>

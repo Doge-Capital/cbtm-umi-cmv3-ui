@@ -256,7 +256,7 @@ export default function Home() {
         <style jsx global>
           {`
             body {
-              background: #2d3748;
+              background: #97ADED;
             }
           `}
         </style>
@@ -311,6 +311,9 @@ export default function Home() {
               )}
             </Center>
             <Stack w={"full"} divider={<StackDivider />} spacing="0">
+
+
+
               {loading ? (
                 <div>
                   <Divider mb="10px" />

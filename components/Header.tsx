@@ -4,25 +4,26 @@ import Round from "@/public/assets/Round.svg";
 import Twitter from "@/public/assets/Twitter.svg";
 import Telegram from "@/public/assets/Telegram.svg";
 import ConnectWallet from "./ConnectWallet";
+import { Box, HStack } from "@chakra-ui/react";
 
 function Header() {
   return (
-    <div className="w-full flex items-center justify-end pt-5 md:pt-8 bg-[#97aded]">
-      <div className="bg-transparent hidden sm:flex items-center justify-center gap-5">
+    <Box display={"flex"} flexDirection={"row"} w={"full"} alignItems={"center"} justifyContent={"end"} pt={"2rem"} bg={"transparent"}>
+      <HStack gap={5}>
         <span className="mx-1">
-          <Image src={Round} alt="" width={22} />
+          <Image src={Round} alt="" width={25} height={25} />
         </span>
         <span className="mx-1">
-          <Image src={Twitter} alt="" width={22} />
+          <Image src={Twitter} alt="" width={25} height={25} />
         </span>
         <span className="mx-1">
-          <Image src={Telegram} alt="" width={22} />
+          <Image src={Telegram} alt="" width={25} height={25} />
         </span>
-      </div>
-      <div className="px-0 sm:px-2 xl:px-4 mx-3">
+      </HStack>
+      <Box ml={12} mr={62}>
         <ConnectWallet />
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 }
 
