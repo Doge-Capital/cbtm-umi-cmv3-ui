@@ -58,7 +58,6 @@ import star2 from "@/public/assets/Star 2.svg";
 import star3 from "@/public/assets/Star 3.svg";
 import star4 from "@/public/assets/Star 4.svg";
 
-
 const WalletMultiButtonDynamic = dynamic(
   async () =>
     (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
@@ -262,7 +261,7 @@ export default function Home() {
   const PageContent = () => {
     return (
       <>
-        <Card backgroundColor="#5175e2" border="1px" borderColor="black.200">
+        <Card backgroundColor="#5175e2">
           <CardHeader>
             <Flex
               minWidth="max-content"
@@ -419,14 +418,22 @@ export default function Home() {
             <Stack divider={<StackDivider />} spacing="6" className="mt-3">
               <div className="flex flex-col justify-center px-3 gap-3 font-inder">
                 <>
-                  <Flex alignItems="center" justifyContent="space-between" backgroundColor="#6183e5" width="100%" fontFamily={"font-inder"} borderRadius={"md"}>
+                  <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                    backgroundColor="#6183e5"
+                    width="100%"
+                    borderRadius={"md"}
+                  >
                     <Flex px={3} alignItems="center" justifyContent="center">
-                      <div className="p-1 sm:p-2 md:p-3 lg:p-5">
-                        <Image src={star1} alt="" className="" width={22}/>
+                      <div className="p-1 sm:p-2 md:p-3 lg:p-5 min-w-fit">
+                        <Image src={star1} alt="" className="" width={24} />
                       </div>
                       <div className="flex flex-col p-3">
                         <p className="text-lg text-white">Bronze Keycards</p>
-                        <p className="text-sm text-gray-300">1k $CBTM per 24h</p>
+                        <p className="text-sm text-gray-300">
+                          1k $CBTM per 24h
+                        </p>
                       </div>
                     </Flex>
                     <Flex px={8}>
@@ -435,14 +442,22 @@ export default function Home() {
                   </Flex>
                 </>
                 <>
-                  <Flex alignItems="center" justifyContent="space-between" backgroundColor="#6183e5" width="100%" fontFamily={"font-inder"} borderRadius={"md"}>
+                  <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                    backgroundColor="#6183e5"
+                    width="100%"
+                    borderRadius={"md"}
+                  >
                     <Flex px={3} alignItems="center" justifyContent="center">
-                      <div className="p-1 sm:p-2 md:p-3 lg:p-4">
-                        <Image src={star2} alt="" className="" width={22}/>
+                      <div className="p-1 sm:p-2 md:p-3 lg:p-5 min-w-fit">
+                        <Image src={star2} alt="" className="" width={24} />
                       </div>
                       <div className="flex flex-col p-3">
                         <p className="text-lg text-white">Silver Keycards</p>
-                        <p className="text-sm text-gray-300">1.5k $CBTM per 24h</p>
+                        <p className="text-sm text-gray-300">
+                          1.5k $CBTM per 24h
+                        </p>
                       </div>
                     </Flex>
                     <Flex px={8}>
@@ -451,34 +466,50 @@ export default function Home() {
                   </Flex>
                 </>
                 <>
-                  <Flex alignItems="center" justifyContent="space-between" backgroundColor="#6183e5" width="100%" fontFamily={"font-inder"} borderRadius={"md"}>
+                  <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                    backgroundColor="#6183e5"
+                    width="100%"
+                    borderRadius={"md"}
+                  >
                     <Flex px={3} alignItems="center" justifyContent="center">
-                      <div className="p-1 sm:p-2 md:p-3 lg:p-5">
-                        <Image src={star3} alt="" className="" width={22} />
+                      <div className="p-1 sm:p-2 md:p-3 lg:p-5 min-w-fit">
+                        <Image src={star3} alt="" className="" width={24} />
                       </div>
                       <div className="flex flex-col p-3">
                         <p className="text-lg text-white">Gold Keycards</p>
-                        <p className="text-sm text-gray-300">2k $CBTM per 24h</p>
+                        <p className="text-sm text-gray-300">
+                          2k $CBTM per 24h
+                        </p>
                       </div>
                     </Flex>
                     <Flex px={8}>
-                      <p className="text-2xl text-[#F8F8B4]">10%</p>
+                      <p className="text-2xl text-[#F8F8B4]">5%</p>
                     </Flex>
                   </Flex>
                 </>
                 <>
-                  <Flex alignItems="center" justifyContent="space-between" backgroundColor="#6183e5" width="100%" fontFamily={"font-inder"} borderRadius={"md"}>
+                  <Flex
+                    alignItems="center"
+                    justifyContent="space-between"
+                    backgroundColor="#6183e5"
+                    width="100%"
+                    borderRadius={"md"}
+                  >
                     <Flex px={3} alignItems="center" justifyContent="center">
-                      <div className="p-1 sm:p-2 md:p-3 lg:p-5">
-                        <Image src={star4} alt="" className="" width={22} />
+                      <div className="p-1 sm:p-2 md:p-3 lg:p-5 min-w-fit">
+                        <Image src={star4} alt="" className="" width={24} />
                       </div>
                       <div className="flex flex-col p-3">
                         <p className="text-lg text-white">Rainbow Keycards</p>
-                        <p className="text-sm text-gray-300">2k $CBTM per 24h + 1 $SOL prize giveaway</p>
+                        <p className="text-sm text-gray-300">
+                          2k $CBTM per 24h + 1 $SOL prize giveaway
+                        </p>
                       </div>
                     </Flex>
                     <Flex px={8}>
-                      <p className="text-2xl text-[#F8F8B4]">10%</p>
+                      <p className="text-2xl text-[#F8F8B4]">5%</p>
                     </Flex>
                   </Flex>
                 </>
@@ -487,18 +518,18 @@ export default function Home() {
           </CardBody>
         </Card>
       </>
-    )
-  }
+    );
+  };
 
   return (
     <div className="w-full h-screen flex flex-col overflow-y-auto nobar">
       <Image
-          src={BG}
-          alt={"Background"}
-          layout="fill"
-          objectFit={"cover"}
-          quality={100}
-        />
+        src={BG}
+        alt={"Background"}
+        layout="fill"
+        objectFit={"cover"}
+        quality={100}
+      />
       <div className="w-full flex items-center justify-end pt-5 md:pt-8 z-[100]">
         <div className="bg-transparent hidden sm:flex items-center justify-center gap-5">
           <button
