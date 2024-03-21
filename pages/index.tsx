@@ -543,15 +543,33 @@ export default function Home() {
           >
             BUY $CBTM
           </button>
-          <span className="mx-1">
-            <Image src={Round} alt="" width={22} />
-          </span>
-          <span className="mx-1">
-            <Image src={Twitter} alt="" width={22} />
-          </span>
-          <span className="mx-1">
-            <Image src={Telegram} alt="" width={22} />
-          </span>
+          <button
+            className="mx-1"
+            onClick={() => {
+              window.open(
+                "https://solscan.io/token/FpZWLF31ymwJQNKwdhxAog9HwFEJGWjk6JqQUWYnuHry",
+                "_blank"
+              );
+            }}
+          >
+            <Image src={Round} alt="solscanIcon" width={22} />
+          </button>
+          <button
+            className="mx-1"
+            onClick={() => {
+              window.open("https://twitter.com/cbtmsol", "_blank");
+            }}
+          >
+            <Image src={Twitter} alt="twitterIcon" width={22} />
+          </button>
+          <button
+            className="mx-1"
+            onClick={() => {
+              window.open("https://t.me/+eAoEUCphspMzOGRh", "_blank");
+            }}
+          >
+            <Image src={Telegram} alt="telegramIcon" width={22} />
+          </button>
         </div>
         <div className="px-0 sm:px-2 xl:px-4 mx-3">
           <WalletMultiButtonDynamic />
