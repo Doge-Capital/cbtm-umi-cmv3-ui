@@ -22,7 +22,7 @@ export const mintText = [
 ];
 
 //header image in the ui. replace with your own
-export const image = "https://avatars.githubusercontent.com/u/93528482?v=4";
+export const image = "/favicon.ico";
 
 //website title
 export const headerText = "$CBTM NFT";
