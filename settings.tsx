@@ -25,4 +25,4 @@ export const mintText = [
 export const image = "/favicon.ico";
 
 //website title
-export const headerText = "$CBTM NFT";
+export const headerText = "$CBTM KEYCARDS";

@@ -252,7 +252,7 @@ const mintClick = async (
     const successfulMints = await verifyTx(umi, signatures, latestBlockhash);
 
     updateLoadingText(
-      "Fetching your NFT",
+      "Fetching your KEYCARD",
       guardList,
       guardToUse.label,
       setGuardList

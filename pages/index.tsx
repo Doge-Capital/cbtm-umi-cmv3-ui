@@ -313,7 +313,7 @@ export default function Home() {
                   mt={4}
                 >
                   <Text fontSize={"md"} className="tracking-wide">
-                    Available NFTs :{" "}
+                    Available KEYCARDs :{" "}
                   </Text>
                   <Text fontWeight={"semibold"} className="tracking-wider">
                     {Number(candyMachine?.data.itemsAvailable) -
@@ -381,7 +381,7 @@ export default function Home() {
         <Modal isOpen={isShowNftOpen} onClose={onShowNftClose}>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Your minted NFT:</ModalHeader>
+            <ModalHeader>Your minted KEYCARD:</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
               <ShowNft nfts={mintsCreated} />
@@ -408,7 +408,7 @@ export default function Home() {
                 width="100%"
               >
                 <Text fontSize={"2xl"} fontWeight={""}>
-                  NFT Tiers
+                  KEYCARD Tiers
                 </Text>
                 <Text fontSize={"md"} fontWeight={""}>
                   Mint Chances
