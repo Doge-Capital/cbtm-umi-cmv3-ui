@@ -313,7 +313,7 @@ export default function Home() {
                   mt={4}
                 >
                   <Text fontSize={"md"} className="tracking-wide">
-                    Available KEYCARDs :{" "}
+                    Available KEYCARDS :{" "}
                   </Text>
                   <Text fontWeight={"semibold"} className="tracking-wider">
                     {Number(candyMachine?.data.itemsAvailable) -
