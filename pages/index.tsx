@@ -535,6 +535,14 @@ export default function Home() {
           <button
             className="mx-1 text-white font-extrabold text-xl"
             onClick={() => {
+              window.open("https://cbtm-stake.xyz/", "_blank");
+            }}
+          >
+            STAKE YOUR KEYCARDS
+          </button>
+          <button
+            className="mx-1 text-white font-extrabold text-xl"
+            onClick={() => {
               window.open(
                 "https://jup.ag/swap/SOL-CBTM_FpZWLF31ymwJQNKwdhxAog9HwFEJGWjk6JqQUWYnuHry",
                 "_blank"
