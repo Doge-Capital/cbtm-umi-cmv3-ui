@@ -218,7 +218,7 @@ const mintClick = async (
     let amountSent = 0;
     const sendPromises = signedTransactions.map((tx, index) => {
       return umi.rpc
-        .sendTransaction(tx)
+        .sendTransaction(tx,{skipPreflight:true})
         .then((signature) => {
           console.log(
             `Transaction ${index + 1} resolved with signature: ${
