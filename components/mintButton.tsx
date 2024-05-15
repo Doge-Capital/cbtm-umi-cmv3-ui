@@ -194,7 +194,7 @@ const mintClick = async (
       );
 
       tx = tx.prepend(setComputeUnitLimit(umi, { units: 800_000 }));
-      tx = tx.prepend(setComputeUnitPrice(umi, { lamports: lamports(10_000) }));
+      tx = tx.prepend(setComputeUnitPrice(umi, { lamports: lamports(20_000) }));
       tx = tx.setAddressLookupTables(tables);
       tx = tx.setBlockhash(latestBlockhash.blockhash);
 
